@@ -27,6 +27,7 @@ RSpec.configure do |config|
 
   config.include Features, type: :feature
 
+  config.include Devise::TestHelpers
   config.include Warden::Test::Helpers
   config.before(:suite) { Warden.test_mode!  }
   config.after(:each)   { Warden.test_reset! }
