@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe MessageMailer, type: :mailer do
   describe 'send_to_admin' do
-    let(:message) { create :message }
+    let(:message) { build_stubbed :message }
     let(:mail) { MessageMailer.send_to_admin(message) }
 
     before do

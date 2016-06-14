@@ -1,5 +1,4 @@
 class MessagesController < ApplicationController
-
   def create
     @message = Message.create(message_params)
     respond_to :js
@@ -10,7 +9,6 @@ class MessagesController < ApplicationController
     else
       render 'fail'
     end
-
   end
 
   private
