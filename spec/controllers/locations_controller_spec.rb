@@ -5,7 +5,7 @@ RSpec.describe LocationsController, type: :controller do
   describe 'GET #index' do
     subject { get :index }
 
-    include_examples 'redirects guest'
+    it_behaves_like 'action not allowed for guests'
     include_examples 'calls authorize with logged in user', Location
   end
 
@@ -14,7 +14,7 @@ RSpec.describe LocationsController, type: :controller do
 
     subject { get :show, params: { id: location.id } }
 
-    include_examples 'redirects guest'
+    it_behaves_like 'action not allowed for guests'
 
     include_context 'user is logged in' do
       it 'calls authorize' do
@@ -35,7 +35,7 @@ RSpec.describe LocationsController, type: :controller do
 
     subject { get :edit, params: { id: location.id } }
 
-    include_examples 'redirects guest'
+    it_behaves_like 'action not allowed for guests'
 
     include_context 'user is logged in' do
       it 'calls authorize' do
@@ -56,7 +56,7 @@ RSpec.describe LocationsController, type: :controller do
 
     subject { post :create, params: { location: location_params } }
 
-    include_examples 'redirects guest'
+    it_behaves_like 'action not allowed for guests'
 
     include_context 'user is logged in' do
       include_examples 'calls authorize with', Location
@@ -102,7 +102,7 @@ RSpec.describe LocationsController, type: :controller do
 
     subject { put :update, params: { id: location.id, location: location_params } }
 
-    include_examples 'redirects guest'
+    it_behaves_like 'action not allowed for guests'
 
     include_context 'user is logged in' do
       include_examples 'calls authorize with', Location
@@ -149,7 +149,7 @@ RSpec.describe LocationsController, type: :controller do
 
     subject { delete :destroy, params: { id: location.id } }
 
-    include_examples 'redirects guest'
+    it_behaves_like 'action not allowed for guests'
 
     include_context 'user is logged in' do
       include_examples 'redirects unauthorized user'

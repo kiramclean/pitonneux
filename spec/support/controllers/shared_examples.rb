@@ -1,4 +1,4 @@
-RSpec.shared_examples 'redirects guest' do
+RSpec.shared_examples 'action not allowed for guests' do
   context 'guest tries to access' do
     before do
       allow(request.env['warden'])

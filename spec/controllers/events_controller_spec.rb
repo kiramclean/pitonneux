@@ -5,7 +5,7 @@ RSpec.describe EventsController do
   describe 'GET #index' do
     subject { get :index }
 
-    include_examples 'redirects guest'
+    it_behaves_like 'action not allowed for guests'
     include_examples 'calls authorize with logged in user', Event
   end
 
@@ -14,7 +14,7 @@ RSpec.describe EventsController do
 
     subject { get :show, params: { id: event.id } }
 
-    include_examples 'redirects guest'
+    it_behaves_like 'action not allowed for guests'
 
     include_context 'user is logged in' do
       it 'calls authorize' do
@@ -36,7 +36,7 @@ RSpec.describe EventsController do
 
     subject { get :edit, params: { id: event.id } }
 
-    include_examples 'redirects guest'
+    it_behaves_like 'action not allowed for guests'
 
     include_context 'user is logged in' do
       it 'calls authorize' do
@@ -57,7 +57,7 @@ RSpec.describe EventsController do
 
     subject { post :create, params: { event: event_params } }
 
-    include_examples 'redirects guest'
+    it_behaves_like 'action not allowed for guests'
 
     include_context 'user is logged in' do
       include_examples 'calls authorize with', Event
@@ -103,7 +103,7 @@ RSpec.describe EventsController do
 
     subject { put :update, params: { id: event.id, event: event_params } }
 
-    include_examples 'redirects guest'
+    it_behaves_like 'action not allowed for guests'
 
     include_context 'user is logged in' do
       include_examples 'calls authorize with', Event
@@ -150,7 +150,7 @@ RSpec.describe EventsController do
 
     subject { delete :destroy, params: { id: event.id } }
 
-    include_examples 'redirects guest'
+    it_behaves_like 'action not allowed for guests'
 
     include_context 'user is logged in' do
       include_examples 'redirects unauthorized user'
